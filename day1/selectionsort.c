@@ -37,24 +37,26 @@ int main()
 	{
 		arr[i]=rand()%1000;
 	}
-//	printf("Display before sorting : ");
-//	for(i=0;i<n;i++)
-//	{
-//		printf("%d ",arr[i]);
-//	}
-//	printf("\n");
+	FILE *fptr=fopen("selection_sort.txt","w");
+	fprintf(fptr,"Data before sorting : \n");
+	for(i=0;i<n;i++)
+	{
+		fprintf(fptr,"%d ",arr[i]);
+	}
+	fprintf(fptr,"\n");
 	clock_t start = clock();
 	selectionsort(arr,n);
 	clock_t end = clock();
 	double time_taken = ((double) (end - start)) / CLOCKS_PER_SEC;
-//	printf("Display after sorting : ");
-//	for(i=0;i<n;i++)
-//	{
-//		printf("%d ",arr[i]);
-//	}
-//	printf("\n");
-
+	fprintf(fptr,"data after sorting : \n");
+	for(i=0;i<n;i++)
+	{
+		fprintf(fptr,"%d ",arr[i]);
+	}
+	fprintf(fptr,"\n");
 	printf("Time taken to run the algorithm: %f seconds\n", time_taken);
+	fprintf(fptr,"Time taken to run the algorithm: %f seconds\n", time_taken);
+	fclose(fptr);
 	return 0;
 }
 

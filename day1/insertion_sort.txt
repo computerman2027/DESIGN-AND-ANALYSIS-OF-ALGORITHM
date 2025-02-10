@@ -1,0 +1,5 @@
+Data before sorting : 
+41 467 334 500 169 724 478 358 962 464 705 145 281 827 
+data after sorting : 
+41 145 169 281 334 358 464 467 478 500 705 724 827 962 
+Time taken to run the algorithm: 0.000000 seconds
