@@ -37,24 +37,24 @@ int main()
 	srand(1);
 	for(i=0;i<n;i++)
 	{
-		arr[i]=rand();
+		arr[i]=rand()%1000;
 	}
-	//printf("Display before sorting : ");
-	//for(i=0;i<n;i++)
-	//{
-	//	printf("%d ",arr[i]);
-	//}
-	//printf("\n");
+//	printf("Display before sorting : ");
+//	for(i=0;i<n;i++)
+//	{
+//		printf("%d ",arr[i]);
+//	}
+//	printf("\n");
 	clock_t start = clock();
 	bubblesort(arr,n);
 	clock_t end = clock();
 	double time_taken = ((double) (end - start)) / CLOCKS_PER_SEC;
-	//printf("Display after sorting : ");
-	//for(i=0;i<n;i++)
-	//{
-	//	printf("%d ",arr[i]);
-	//}
-	//printf("\n");
+//	printf("Display after sorting : ");
+//	for(i=0;i<n;i++)
+//	{
+//		printf("%d ",arr[i]);
+//	}
+//	printf("\n");
 
 	printf("Time taken to run the algorithm: %f seconds\n", time_taken);
 	return 0;
