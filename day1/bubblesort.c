@@ -42,13 +42,14 @@ int main()
 		//printf("t = %d",arr[i]);
 	}
 	FILE *fptr=fopen("bubble_sort.txt","a");
-	fprintf(fptr,"no of input = %d\n",term);
+	//fprintf(fptr,"no of input = %d\n",term);
 	clock_t start = clock();
 	bubblesort(arr,term);
 	clock_t end = clock();
 	double time_taken = ((double) (end - start)) / CLOCKS_PER_SEC;
 	printf("Time taken to run the algorithm for %d: %f seconds\n",term, time_taken);
-	fprintf(fptr,"Time taken to run the algorithm: %f seconds\n", time_taken);
+	//fprintf(fptr,"Time taken to run the algorithm: %f seconds\n", time_taken);
+	fprintf(fptr,"%d \t %f\n",term,time_taken);
 	fclose(fptr);
 	}
 	return 0;
