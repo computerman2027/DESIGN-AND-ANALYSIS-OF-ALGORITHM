@@ -26,7 +26,7 @@ int main()
 		printf("Error in creation\n");
 		return 0;
 	}
-	srand(1);
+	srand(time());
 	for(i=0;i<n;i++)
 	{
 		arr[i]=rand()%1000;
