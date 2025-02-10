@@ -23,32 +23,35 @@ void selectionsort(int* arr, int n)
 }
 int main()
 {
-	int n,i,term=1,j;
-	for(j=1;j<=6;j++)
-	{
-	term*=10;
-	int* arr=(int*)malloc(term*sizeof(int));
-	if(arr==NULL)
-	{
-		printf("Error in creation\n");
-		return 0;
-	}
+	FILE *fptr = fopen("selection_sort.txt", "w");
+	fprintf(fptr, "%-12s  %-12s\n", "No of data", "Time taken (s)");
+	int n, i, term = 1, j;
 	srand(time(NULL));
-	for(i=0;i<term;i++)
+	for (j = 1; j <= 6; j++)
 	{
-		arr[i]=rand()%1000;
-		//printf("t = %d",arr[i]);
+		term *= 10;
+		int *arr = (int *)malloc(term * sizeof(int));
+		if (arr == NULL)
+		{
+			printf("Error in creation\n");
+			return 0;
+		}
+		for (i = 0; i < term; i++)
+		{
+			// arr[i]=rand()%1000;
+			arr[i] = rand();
+			// printf("t = %d\n", arr[i]);
+		}
+
+		// fprintf(fptr,"no of input = %d\n",term);
+		clock_t start = clock();
+		selectionsort(arr, term);
+		clock_t end = clock();
+		double time_taken = ((double)(end - start)) / CLOCKS_PER_SEC;
+		printf("Time taken to run the algorithm for %d: %f seconds\n", term, time_taken);
+		// fprintf(fptr,"Time taken to run the algorithm: %f seconds\n", time_taken);
+		fprintf(fptr, "%-12d  %-12.6f\n", term, time_taken);
 	}
-	FILE *fptr=fopen("selection_sort.txt","a");
-	//fprintf(fptr,"no of input = %d\n",term);
-	clock_t start = clock();
-	selectionsort(arr,term);
-	clock_t end = clock();
-	double time_taken = ((double) (end - start)) / CLOCKS_PER_SEC;
-	printf("Time taken to run the algorithm for %d: %f seconds\n",term, time_taken);
-	//fprintf(fptr,"Time taken to run the algorithm: %f seconds\n", time_taken);
-	fprintf(fptr,"%d \t %f\n",term,time_taken);
 	fclose(fptr);
-	}
 	return 0;
 }
