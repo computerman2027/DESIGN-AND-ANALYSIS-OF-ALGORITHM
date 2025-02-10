@@ -2,26 +2,24 @@
 #include<stdlib.h>
 #include <time.h>
 
-void bubblesort(int* arr, int n)
+void selectionsort(int* arr, int n)
 {
-	int i,j,flag,temp;;
-	for(i=0;i<n-1;i++)
+	int i,j,pos,temp;
+	for(i=0;i<n;i++)
 	{
-		flag=0;
-		for(j=0;j<n-i-1;j++)
+		temp=arr[i];
+		pos=i;
+		for(j=i+1;j<n;j++)
 		{
-			if(arr[j]>arr[j+1])
+			if(arr[j]<temp)		
 			{
 				temp=arr[j];
-				arr[j]=arr[j+1];
-				arr[j+1]=temp;
-				flag=1;
+				pos=j;
 			}
 		}
-		if(flag==0)
-		return;
-	}
-		
+		arr[pos]=arr[i];
+		arr[i]=temp;		
+	}		
 }
 int main()
 {
@@ -46,7 +44,7 @@ int main()
 //	}
 //	printf("\n");
 	clock_t start = clock();
-	bubblesort(arr,n);
+	selectionsort(arr,n);
 	clock_t end = clock();
 	double time_taken = ((double) (end - start)) / CLOCKS_PER_SEC;
 //	printf("Display after sorting : ");
