@@ -15,44 +15,34 @@ void insertionsort(int* arr, int n)
 		arr[j+1]=temp;
 	}		
 }
-int main()
+iint main()
 {
-	int n,i;
-	printf("Enter array size : ");
-	scanf("%d",&n);
-	int* arr=(int*)malloc(n*sizeof(int));
+	int n,i,term=1,j;
+	for(j=1;j<=6;j++)
+	{
+	term*=10;
+	int* arr=(int*)malloc(term*sizeof(int));
 	if(arr==NULL)
 	{
 		printf("Error in creation\n");
 		return 0;
 	}
-	srand(time());
-	for(i=0;i<n;i++)
+	srand(time(NULL));
+	for(i=0;i<term;i++)
 	{
 		arr[i]=rand()%1000;
+		//printf("t = %d",arr[i]);
 	}
-	FILE *fptr=fopen("insertion_sort.txt","w");
-	fprintf(fptr,"Data before sorting : \n");
-	for(i=0;i<n;i++)
-	{
-		fprintf(fptr,"%d ",arr[i]);
-	}
-	fprintf(fptr,"\n");
+	FILE *fptr=fopen("bubble_sort.txt","a");
+	fprintf(fptr,"no of input = %d\n",term);
 	clock_t start = clock();
-	insertionsort(arr,n);
+	insertionsort(arr,term);
 	clock_t end = clock();
 	double time_taken = ((double) (end - start)) / CLOCKS_PER_SEC;
-	fprintf(fptr,"data after sorting : \n");
-	for(i=0;i<n;i++)
-	{
-		fprintf(fptr,"%d ",arr[i]);
-	}
-	fprintf(fptr,"\n");
-	printf("Time taken to run the algorithm: %f seconds\n", time_taken);
+	printf("Time taken to run the algorithm for %d: %f seconds\n",term, time_taken);
 	fprintf(fptr,"Time taken to run the algorithm: %f seconds\n", time_taken);
 	fclose(fptr);
+	}
 	return 0;
 }
 
-
-	
