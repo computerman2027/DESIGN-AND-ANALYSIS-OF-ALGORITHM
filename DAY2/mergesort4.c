@@ -23,8 +23,8 @@ void merge(int* arr, int p, int q, int r)
     {
         right[j]=arr[q+j+1];
     }
-    left[i]=INT_MAX;
-    right[j]=INT_MAX;
+    left[i]=(int)INFINITY;
+    right[j]=(int)INFINITY;
     i=0;
     j=0;
 
