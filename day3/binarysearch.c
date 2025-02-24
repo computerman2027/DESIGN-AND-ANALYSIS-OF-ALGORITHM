@@ -41,6 +41,11 @@ int main()
     for (i = 0; i < n; i++)
     {
         scanf("%d", &arr[i]);
+        if(i!=0 && arr[i]<arr[i-1])
+        {
+          printf("array not in sorted order\n");
+          return 0;
+        }
     }
     printf("Enter data to be searched in array : ");
     scanf("%d",&item);
