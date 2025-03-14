@@ -72,7 +72,7 @@ Matrix sub(Matrix a, Matrix b)
     return c;
 }
 
-Matrix mul(Matrix a, Matrix b)
+Matrix multiply(Matrix a, Matrix b)
 {
     int n = a.rows;
     if (n == 1)
@@ -120,13 +120,13 @@ Matrix mul(Matrix a, Matrix b)
     Matrix s9 = sub(a11, a21);
     Matrix s10 = add(b11, b12);
 
-    Matrix p1 = mul(a11, s1);
-    Matrix p2 = mul(s2, b22);
-    Matrix p3 = mul(s3, b11);
-    Matrix p4 = mul(a22, s4);
-    Matrix p5 = mul(s5, s6);
-    Matrix p6 = mul(s7, s8);
-    Matrix p7 = mul(s9, s10);
+    Matrix p1 = multiply(a11, s1);
+    Matrix p2 = multiply(s2, b22);
+    Matrix p3 = multiply(s3, b11);
+    Matrix p4 = multiply(a22, s4);
+    Matrix p5 = multiply(s5, s6);
+    Matrix p6 = multiply(s7, s8);
+    Matrix p7 = multiply(s9, s10);
 
     Matrix c11 = add(sub(add(p5, p4), p2), p6);
     Matrix c12 = add(p1, p2);
@@ -154,31 +154,38 @@ int main()
     printf("Enter matrix size (power of 2): ");
     scanf("%d", &n);
 
-    Matrix mat1 = createMatrix(n, n);
-    Matrix mat2 = createMatrix(n, n);
+    if (n > 0 && (n & (n - 1)) == 0)
+    {
 
-    printf("Enter elements for 1st matrix:\n");
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            scanf("%d", &mat1.arr[i][j]);
+        Matrix mat1 = createMatrix(n, n);
+        Matrix mat2 = createMatrix(n, n);
 
-    printf("Enter elements for 2nd matrix:\n");
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            scanf("%d", &mat2.arr[i][j]);
+        printf("Enter elements for 1st matrix:\n");
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                scanf("%d", &mat1.arr[i][j]);
 
-    clock_t start = clock();
-    Matrix mat3 = mul(mat1, mat2);
-    clock_t end = clock();
+        printf("Enter elements for 2nd matrix:\n");
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                scanf("%d", &mat2.arr[i][j]);
 
-    printMatrix(mat3, "Resultant Matrix");
+        clock_t start = clock();
+        Matrix mat3 = multiply(mat1, mat2);
+        clock_t end = clock();
 
-    printf("CPU TIME: %lf seconds\n", ((double)(end - start)) / CLOCKS_PER_SEC);
+        printMatrix(mat3, "Resultant Matrix");
 
-    freeMatrix(mat1);
-    freeMatrix(mat2);
-    freeMatrix(mat3);
+        printf("CPU TIME: %lf seconds\n", ((double)(end - start)) / CLOCKS_PER_SEC);
+
+        freeMatrix(mat1);
+        freeMatrix(mat2);
+        freeMatrix(mat3);
+    }
+    else
+    {
+        printf("Invalid Matrix Size");
+    }
 
     return 0;
 }
-
