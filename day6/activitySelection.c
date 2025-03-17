@@ -80,7 +80,7 @@ int main()
     int* ans = avtselec(avt,n);
     clock_t end = clock();
     
-
+    printf("Ans vector = ");
     for(i=0;i<n;i++)
     {
       printf("%d ",ans[i]);
