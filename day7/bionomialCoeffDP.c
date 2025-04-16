@@ -7,7 +7,6 @@ int size = -1;
 
 int binomialcoeficient(int n, int k)
 {
-    // bottom up approach
     int i, j;
     if (size == -1)
     {
@@ -25,9 +24,10 @@ int binomialcoeficient(int n, int k)
     
     for(i=0;i<=n;i++)
     {
-        for(j=0;j<=k;j++)
+        for(j=0;j<=i;j++)
         {
-            if(i==0 || j==0)
+            // printf("%d %d\n",i,j);
+            if(j==0 || j==i)
             {
                 dp[i][j]=1;
             }
@@ -41,7 +41,7 @@ int binomialcoeficient(int n, int k)
     printf("Binomial Solution Table  : \n");
     for(i=0;i<=n;i++)
     {
-        for(j=0;j<=k;j++)
+        for(j=0;j<=i;j++)
         {
             printf("%d\t",dp[i][j]);
         }
@@ -59,6 +59,11 @@ int main()
     scanf("%d", &n);
     printf("Enter k : ");
     scanf("%d", &k);
+    if(n<0 || k<0 || k>n)
+    {
+        printf("INVALID INPUT");
+        return 0;
+    }
     start = clock();
     ans = binomialcoeficient(n, k);
     end = clock();
