@@ -48,10 +48,10 @@ void prims(Graph* G)
         }
     }
     int sum=0;
-    printf("Edge\t Weight\n");
+    printf("Edges in mst :\n");
     for(int i=1;i<V;i++)
     {
-        printf("%d--%d\t %d\n",parent[i],i,wt[i]);
+        printf("%d -- %d == %d\n",parent[i],i,wt[i]);
         sum+=wt[i];
     }
     printf("\nMinimum Spanning Tree cost is: %d",sum);
@@ -59,14 +59,14 @@ void prims(Graph* G)
 int main()
 {
     Graph *G=(Graph*)malloc(sizeof(Graph));
-    printf("\nEnter no of vertex: ");
+    printf("Enter no of vertex: ");
     scanf("%d",&G->v);
     G->adjmat=(int**)malloc((G->v)*sizeof(int*));
     for(int i=0;i<G->v;i++)
     {
         G->adjmat[i]=(int*)malloc((G->v)*sizeof(int));
     }
-    printf("\nEnter the Adjacency matrix: (0/Wt): \n");
+    printf("Enter adjacency matrix : \n");
     for(int i=0;i<G->v;i++)
     {
         for(int j=0;j<G->v;j++)
@@ -74,11 +74,11 @@ int main()
             scanf("%d",&G->adjmat[i][j]);
         }
     }
-    printf("\nMinimum spanning tree : \n");
+    printf("Minimum spanning tree : \n");
     clock_t start=clock();
     prims(G);
     clock_t end=clock();
     double time=((double)(end-start))/CLOCKS_PER_SEC;
-    printf("\nCPU TIME: %lf SEC\n",time);
+    printf("\nCPU TIME: %lf seconds\n",time);
     return 0;
 }
