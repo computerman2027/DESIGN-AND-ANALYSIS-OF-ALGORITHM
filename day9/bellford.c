@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include<limits.h>
+#include<time.h>
 
-#define INF 99999 
+#define INF INT_MAX 
 
 typedef struct {
     int u, v, weight;
