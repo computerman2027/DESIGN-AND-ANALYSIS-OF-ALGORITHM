@@ -9,9 +9,9 @@ void printSolution(int **dist, int V,int d)
 {
     int i,j;
     printf("\nD%d predecessor matrix:\n",d);
-    for (int i = 0; i < V; i++)
-    {
-        for (int j = 0; j < V; j++)
+    for (i = 0; i < V; i++)
+    {   
+        for (j = 0; j < V; j++)
         {
             if (dist[i][j] == INF)
                 printf("%7s\t", "INF");
@@ -32,7 +32,7 @@ void floydWarshall(int **graph, int V)
         dist[i] = (int *)malloc(V * sizeof(int));
 
     for (i = 0; i < V; i++)
-        for (int j = 0; j < V; j++)
+        for (j = 0; j < V; j++)
             dist[i][j] = graph[i][j];
 
     printSolution(dist, V,d);
